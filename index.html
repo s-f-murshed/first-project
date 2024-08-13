@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+        <form class="form">
+            <div class="form-group">
+                <label for="stream">Stream:</label>
+                <select id="stream">
+                    <option value="" disabled selected>Select Stream</option>
+                    <!-- Add options here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bookName">Enter Book Name:</label>
+                <input type="text" id="bookName">
+            </div>
+            <div class="form-group">
+                <label for="semester">Semester:</label>
+                <select id="semester">
+                    <option value="" disabled selected>Select Semester</option>
+                    <!-- Add options here -->
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submitBtn">Submit</button>
+                <button type="button" id="exitBtn">Exit</button>
+            </div>
+            <div class="form-group">
+                <label for="bookId">Enter Book ID to Delete:</label>
+                <input type="text" id="bookId">
+            </div>
+            <div class="form-group">
+                <button type="button" id="showBtn">Show</button>
+                <button type="button" id="deleteBtn">Delete</button>
+            </div>
+            <div class="form-group">
+                <input type="text" id="search" placeholder="Search...">
+                <button type="button" id="searchBtn">Search</button>
+            </div>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stream</th>
+                    <th>ID</th>
+                    <th>Book Name</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table data will go here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
