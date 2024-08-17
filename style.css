@@ -48,7 +48,9 @@ h1 {
 }
 
 #submitBtn, #exitBtn, #showBtn, #deleteBtn, #searchBtn {
-    background-color: #007BFF;
+    background-color: #049936;
+    font-style: italic;
+    
     color: white;
     cursor: pointer;
     margin-top: 5px;
@@ -59,7 +61,7 @@ h1 {
 }
 
 #submitBtn:hover, #exitBtn:hover, #showBtn:hover, #deleteBtn:hover, #searchBtn:hover {
-    background-color: #0056b3;
+    background-color: #007BFF;
 }
 
 table {

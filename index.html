@@ -5,6 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <script> 
+    async function addBook(event){
+        event.preventDefault();
+        const stm = document.getElementById('STM').value;
+        const id = document.getElementById('B_ID').value;
+        const name = document.getElementById('B_NAME').value;
+        const sem = document.getElementById('SEM').value;
+
+        const response = await fetch('/addbook', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ stm, id, name, sem }),
+        });
+
+        const result = await response.text();
+        alert(result);
+    }
+
+    async function fetchBooks(event) {
+        event.preventDefault();
+        const response = await fetch('/users');
+        const users = await response.json();
+
+        const usersList = document.getElementById('usersTableBody');
+        usersList.innerHTML = '';
+
+        users.forEach(user => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${user.STM}</td><td>${user.B_ID}</td><td>${user.B_NAME}</td><td>${user.SEM}</td>`;
+            usersList.appendChild(tr);
+        });
+    }
+//     function close_window() {
+//   if (confirm("Close Window?")) {
+//     close();
+//   }
+// }
+    </script> -->
 </head>
 <body>
     <div class="container">
@@ -12,22 +52,24 @@
         <form class="form">
             <div class="form-group">
                 <label for="stream">Stream:</label>
-                <select id="stream">
+                <select id="STM">
                     <option value="" disabled selected>Select Stream</option>
                     <option value="CST">CST</option>
                     <option value="ME">ME</option>
                     <option value="CHE">CHE</option>
-
-                
                 </select>
             </div>
             <div class="form-group">
+                <label for="bookId">Enter Book ID:</label>
+                <input type="text" id="B_ID" placeholder="Enter Book ID Here">
+            </div>
+            <div class="form-group">
                 <label for="bookName">Enter Book Name:</label>
-                <input type="text" id="bookName" placeholder="Enter Book Name Here">
+                <input type="text" id="B_NAME" placeholder="Enter Book Name Here">
             </div>
             <div class="form-group">
                 <label for="semester">Semester:</label>
-                <select id="semester">
+                <select id="SEM">
                     <option value="" disabled selected>Select Semester</option>
                     <option value="3RD">3RD</option>
                     <option value="4TH">4TH</option>
@@ -36,15 +78,15 @@
                 </select>
             </div>
             <div class="form-group">
-                <button type="submit" id="submitBtn">Submit</button>
-                <button type="button" id="showBtn">Show</button>
+                <button type="button" id="submitBtn" onclick="addBook(event)">Submit</button>
+                <button type="button" id="showBtn" onclick="fetchBooks(event)">Show</button>
             </div>
             <div class="form-group">
-                <label for="bookId" placeholder="Enter Book ID Here">Enter Book ID to Delete:</label>
-                <input type="text" id="bookId" placeholder="Enter Book ID Here">
+                <label for="bookIdDelete">Enter Book ID to Delete:</label>
+                <input type="text" id="bookIdDelete" placeholder="Enter Book ID Here">
             </div>
             <div class="form-group">
-                <button type="button" id="exitBtn">Exit</button>
+                <button type="button" id="exitBtn" >Exit</button>
                 <button type="button" id="deleteBtn">Delete</button>
             </div>
             <div class="form-group">
@@ -61,7 +103,7 @@
                     <th>Semester</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="usersTableBody">
                 <!-- Table data will go here -->
             </tbody>
         </table>
