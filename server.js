@@ -45,6 +45,39 @@ app.get('/users', (req, res) => {
     });
 });
 
+// Delete data from the database
+app.post('/deletebook', (req, res) => {
+    const user = {  B_ID: req.body.id};
+    const sql = 'DELETE FROM books WHERE B_ID = ?';
+    db.query(sql, user.B_ID, (err, result) => {
+        if (err) throw err;
+        res.send('Book Deleted...');
+    });
+});
+
+// Delete data from the database
+app.post('/searchbook', (req, res) => {
+    const searchTerm = req.body.searchTerm;
+    const sql = `
+        SELECT STM, B_ID, B_NAME, SEM 
+        FROM books 
+        WHERE STM = ? OR B_ID LIKE ? OR SEM LIKE ? OR B_NAME = ?
+    `;
+
+    // Prepare the search term with wildcards for LIKE
+    const queryValues = [
+        searchTerm, 
+        `%${searchTerm}%`, 
+        `%${searchTerm}%`, 
+        searchTerm
+    ];
+
+    db.query(sql, queryValues, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
 // Start the server
 app.listen(2001, async() => {
     // Use dynamic import for the 'open' module
